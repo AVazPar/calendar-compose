@@ -47,9 +47,56 @@ fun MyCalendar() {
 - ✅ Light/dark theme support
 
 
-## 🎨 Customization
+## 🎨 Theming
+Wrap the calendar with CalendarTheme to use one of the built-in palettes.
 ````
-WIP
+import com.avazpar.calendar.theme.CalendarPalette
+import com.avazpar.calendar.theme.CalendarTheme
+
+@Composable
+fun BlueCalendar() {
+    CalendarTheme(
+        palette = CalendarPalette.BLUE
+    ) {
+        MyCalendar()
+    }
+}
+````
+Available built-in palettes:
+
+CalendarPalette.BLUE
+CalendarPalette.RED
+CalendarPalette.GREEN
+
+### Custom Colors
+You can also provide your own CalendarColors.
+````
+import androidx.compose.ui.graphics.Color
+import com.avazpar.calendar.theme.CalendarColors
+import com.avazpar.calendar.theme.CalendarPalette
+import com.avazpar.calendar.theme.CalendarTheme
+
+private val BrandCalendarColors = CalendarColors(
+    unavailableBorder = Color(0xFFB8C4D6),
+    availableText = Color(0xFF123456),
+    activeText = Color(0xFFFFFFFF),
+    unavailableText = Color(0xFF7A8899),
+    activeBackground = Color(0xFF0D1B2A),
+    availableBackground = Color(0xFF2E6FBB),
+    activeDot = Color(0xFFFFFFFF),
+    availableDot = Color(0xFFEAF2FF),
+    availableBorder = Color(0xFF123456)
+)
+
+@Composable
+fun CustomPaletteCalendar() {
+    CalendarTheme(
+        palette = CalendarPalette.CUSTOM,
+        customColors = BrandCalendarColors
+    ) {
+        MyCalendar()
+    }
+}
 ````
 
 ## 📱 Demo App
