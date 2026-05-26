@@ -31,10 +31,10 @@ private fun getTextColors(
     isSelected: Boolean,
     isNotThisMonth: Boolean
 ): Color = when {
-    hasSessions && isSelected -> CalendarColors.ActiveText
-    hasSessions -> CalendarColors.AvailableText
+    hasSessions && isSelected -> CalendarTheme.colors.activeText
+    hasSessions -> CalendarTheme.colors.availableText
     isNotThisMonth -> Color.Transparent
-    else -> CalendarColors.UnavailableText
+    else -> CalendarTheme.colors.unavailableText
 }
 
 @Composable
@@ -42,8 +42,8 @@ private fun getBackgroundColors(
     hasSessions: Boolean,
     isSelected: Boolean
 ): Color = when {
-    hasSessions && isSelected -> CalendarColors.ActiveBackground
-    hasSessions -> CalendarColors.AvailableBackground
+    hasSessions && isSelected -> CalendarTheme.colors.activeBackground
+    hasSessions -> CalendarTheme.colors.availableBackground
     else -> Color.Transparent
 }
 
@@ -52,8 +52,8 @@ private fun getDotColors(
     hasSessions: Boolean,
     isSelected: Boolean
 ): Color = when {
-    hasSessions && isSelected -> CalendarColors.ActiveDot
-    hasSessions -> CalendarColors.AvailableDot
+    hasSessions && isSelected -> CalendarTheme.colors.activeDot
+    hasSessions -> CalendarTheme.colors.availableDot
     else -> Color.Transparent
 }
 
@@ -61,6 +61,6 @@ private fun getDotColors(
 private fun getBorderColors(
     isCurrentDay: Boolean
 ): Color = when {
-    isCurrentDay -> CalendarColors.AvailableBorder
+    isCurrentDay -> CalendarTheme.colors.availableBorder
     else -> Color.Transparent
 }

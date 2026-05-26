@@ -7,7 +7,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.avazpar.calendar.theme.CalendarColors
+import com.avazpar.calendar.theme.CalendarTheme
 import com.avazpar.calendar.theme.Spacing
 import java.text.DateFormatSymbols
 import java.util.Calendar
@@ -31,7 +31,7 @@ internal fun WeekDayRow(locale: Locale = Locale.getDefault()) {
         daysOfWeek.forEach { weekDay ->
             Text(
                 text = weekDay.take(2).capitalize(locale),
-                color = CalendarColors.ui900
+                color = CalendarTheme.colors.availableText
             )
         }
     }
