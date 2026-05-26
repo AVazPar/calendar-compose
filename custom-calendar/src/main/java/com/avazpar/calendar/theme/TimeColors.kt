@@ -16,15 +16,15 @@ internal fun getColors(
     state: TimeState,
 ): TimeColors = when (state) {
     is TimeState.Default -> TimeColors(
-        text = CalendarColors.AvailableText,
+        text = CalendarTheme.colors.availableText,
         background = null,
-        border = CalendarColors.UnavailableBorder,
+        border = CalendarTheme.colors.unavailableBorder,
         focus = null
     )
 
     is TimeState.Active -> TimeColors(
-        text = CalendarColors.ActiveText,
-        background = CalendarColors.ActiveBackground,
+        text = CalendarTheme.colors.activeText,
+        background = CalendarTheme.colors.activeBackground,
         border = null,
         focus = null
     )

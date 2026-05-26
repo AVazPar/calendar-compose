@@ -11,7 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
-import com.avazpar.calendar.theme.CalendarColors
+import com.avazpar.calendar.theme.CalendarTheme
 import com.avazpar.calendar.theme.Spacing
 import java.time.Month
 import java.time.format.TextStyle
@@ -36,13 +36,13 @@ internal fun MonthRow(
                 .clickable(enabled = !isFirstMonth, onClick = goLeft),
             imageVector = Icons.Filled.ArrowBack,
             contentDescription = "",
-            tint = if (isFirstMonth) CalendarColors.UnavailableText else CalendarColors.ActiveBackground
+            tint = if (isFirstMonth) CalendarTheme.colors.unavailableText else CalendarTheme.colors.availableText
         )
         Text(
             modifier = Modifier.weight(1f),
             text = "$monthName $year",
             textAlign = TextAlign.Center,
-            color = CalendarColors.ui900
+            color = CalendarTheme.colors.availableText
         )
         Icon(
             modifier = Modifier
@@ -50,7 +50,7 @@ internal fun MonthRow(
                 .clickable(enabled = !isLastMonth, onClick = goRight),
             imageVector = Icons.Filled.ArrowForward,
             contentDescription = "",
-            tint = if (isLastMonth) CalendarColors.UnavailableText else CalendarColors.ActiveBackground
+            tint = if (isLastMonth) CalendarTheme.colors.unavailableText else CalendarTheme.colors.availableText
         )
     }
 }

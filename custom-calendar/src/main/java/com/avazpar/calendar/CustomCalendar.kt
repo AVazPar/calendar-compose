@@ -10,6 +10,7 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -37,11 +38,23 @@ fun CustomCalendar(
 ) {
     val calendarSessions = getCalendarSessions(data.availableSessions)
     val keys = calendarSessions.keys
+    val initialPage = keys.indexOfFirst { it.first == selected.monthValue && it.second == selected.year }
+        .takeIf { it >= 0 }
+        ?: keys.indexOfFirst { it.first == today.monthValue && it.second == today.year }
+            .takeIf { it >= 0 }
+        ?: 0
     val pagerState = rememberPagerState(
-        initialPage = calendarSessions.keys.indexOfFirst { it.first == today.monthValue && it.second == today.year },
+        initialPage = initialPage,
         pageCount = { calendarSessions.size }
     )
     val coroutineScope = rememberCoroutineScope()
+
+    LaunchedEffect(selected, keys) {
+        val selectedPage = keys.indexOfFirst { it.first == selected.monthValue && it.second == selected.year }
+        if (selectedPage >= 0 && selectedPage != pagerState.currentPage) {
+            pagerState.animateScrollToPage(selectedPage)
+        }
+    }
 
     HorizontalPager(state = pagerState) { page ->
         Column(
